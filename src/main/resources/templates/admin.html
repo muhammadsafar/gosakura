@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+    <head lang="en">
+        <meta charset="ISO-8859-1">
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Insert title here</title>
+
+        <!-- Bootstrap core CSS -->
+        <link th:href="@{css/bootstrap.min.css}" rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+        <link th:href="@{css/style.css}" rel="stylesheet">
+    </head>
+    <body>
+
+        <h3>DAFTAR ADMIN</h3>
+        <div class="table-responsive">
+            <table class="table table-striped table-sm">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>NIK</th>
+                        <th>Nama</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="admins : ${listAdmin}">
+                        <td></td>
+                        <td th:text="${admins.getNik()}"></td>
+                        <td th:text="${admins.getNama()}"></td>
+                        <td>
+                            <button class="btn btn-sm btn-outline-primary">Edit</button>
+                            <input class="btn btn-sm btn-outline-danger" type="button" onclick="alert('Yakin akan menghapus data')" value="Delete">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <br>
+        <h3>DAFTAR MAHASISWA</h3>
+        <div class="table-responsive">
+            <table class="table table-striped table-sm">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>NIM</th>
+                        <th>Nama</th>
+                        <th>Angkatan</th>
+                        <th>Jurusan</th>
+                        <th>Email</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="mhs : ${listMahasiswa}">
+                        <td></td>
+                        <td th:text="${mhs.getNim()}"></td>
+                        <td th:text="${mhs.getNama()}"></td>
+                        <td th:text="${mhs.getAngkatan()}"></td>
+                        <td th:text="${mhs.getJurusan()}"></td>
+                        <td th:text="${mhs.getEmail()}"></td>
+                        <td>
+                            <button class="btn btn-sm btn-outline-primary">Edit</button>
+                            <input class="btn btn-sm btn-outline-danger" type="button" onclick="alert('Yakin akan menghapus data')" value="Delete">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <br>
+        <h3>DAFTAR SKRIPSI</h3>
+        <div class="table-responsive">
+            <table class="table table-striped table-sm">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>NIM</th>
+                        <th>Judul</th>
+                        <th>Topik</th>
+                        <th>Keminatan</th>
+                        <th>Dosen</th>
+                        <th>Deskripsi</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="skripsi : ${listSkripsi}">
+                        <td></td>
+                        <td th:text="${skripsi.getNim().getNim()}"></td>
+                        <td th:text="${skripsi.getJudul()}"></td>
+                        <td th:text="${skripsi.getTopik()}"></td>
+                        <td th:text="${skripsi.getIdMinat().getKeminatan()}"></td>
+                        <td th:text="${skripsi.getNik().getNama()}"></td>
+                        <td th:text="${skripsi.getDeskripsi()}"></td>
+                        <td th:text="${skripsi.getStatus()}"></td>
+                        <td>
+                            <button class="btn btn-sm btn-outline-primary">Accept</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <br>
+        <h3>FORM ADD ADMIN</h3>
+    <form th:object="${admin}" th:action="@{/addAdmin}" method="post">
+        <label>NIK:</label>
+        <input type="text" th:field="*{nik}"/>
+        <label>Nama:</label>
+        <input type="text" th:field="*{nama}"/>
+        <label>Password:</label>
+        <input type="password" th:field="*{password}" />
+        <!--<input type="text" name="" value="" readonly="readonly" />-->
+<!--        <label>Role</label>
+        <input type="text" th:field="*{idRole}"/>-->
+        <label>Image</label>
+        <input type="text" th:field="*{image}"/>
+        <label>Email</label>
+        <input type="text" th:field="*{email}"/>
+        <button type-"submit">Simpan</button>
+    </form>
+        
+        <br>
+        <h3>FORM ADD MINAT</h3>
+        <form th:object="${minat}" th:action="@{/addMinat}" method="post">
+        <label>ID:</label>
+        <input type="text" th:field="*{idMinat}"/>
+        <label>Keminatan:</label>
+        <input type="text" th:field="*{keminatan}"/>
+        <button type-"submit">Simpan</button>
+    </form>
+        
+        <br>
+        <h3>FORM ADD MAHASISWA</h3>
+        <form th:object="${mhs}" th:action="@{/addMahasiswa}" method="post">
+        <label>NIM:</label>
+        <input type="text" th:field="*{nim}"/>
+        <label>Nama:</label>
+        <input type="text" th:field="*{nama}"/>
+        <label>Jurusan:</label>
+        <input type="text" th:field="*{jurusan}"/>
+        <label>Angkatan:</label>
+        <input type="text" th:field="*{angkatan}"/>
+        <label>Password:</label>
+        <input type="password" th:field="*{password}" />
+        <input type="text" name="" value="" readonly="readonly" />
+        <label>Role</label>
+        <input type="text" th:field="*{idRole}"/>
+        <label>Image</label>
+        <input type="text" th:field="*{image}"/>
+        <label>Email</label>
+        <input type="text" th:field="*{email}"/>
+        <button type-"submit">Simpan</button>
+    </form>
+        
+        
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script th:src="@{js/jquery-3.3.1.slim.min.js}"></script>
+        <script>
+            window.jQuery
+                    || document
+                    .write('<script th:src="@{js/jquery-slim.min.js}"><\/script>')
+        </script>
+        <script th:src="@{js/popper.min.js}"></script>
+        <script th:src="@{js/bootstrap.min.js}"></script>
+        <script th:src="@{js/custom.js}"></script>
+
+        <!-- Icons -->
+        <script th:src="@{js/feather.min.js}"></script>
+        <script>
+            feather.replace()
+        </script>
+    </body>
+</html>
