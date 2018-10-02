@@ -34,6 +34,7 @@
                 <div class="wrap-login100">
                     <form th:action="@{/login-user}" th:object="${dataLogin}" method="post">
                         <p th:if="${invalidCredential}" class="error" > the combination username passsword is wrong</p>
+                        <p th:if="${noData}" class="error" >Data not found, your are not registrated</p>
 
                         <span class="login100-form-title">
                             <div class="insetan">

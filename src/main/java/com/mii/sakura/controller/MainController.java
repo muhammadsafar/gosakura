@@ -47,15 +47,22 @@ public class MainController {
         String takeEmail = user.getEmail();
         String takePassword = user.getPassword();
         
-        
-        if (mail.equals(takeEmail) && pass.equals(takePassword) && ide == 1) {
+        if (takeEmail == "" && takePassword == "") {
+            model.addAttribute("noData", true);
+            return "login";
+           
+        }else{
+           
+            if (mail.equals(takeEmail) && pass.equals(takePassword) && ide == 1) {
             return "user/user";
 
-        }else if (mail.equals(takeEmail) && pass.equals(takePassword) && ide == 6) {
-            return "welcome";
-        }else {
-            model.addAttribute("invalidCredential", true);
-            return "login";
+            } else if (mail.equals(takeEmail) && pass.equals(takePassword) && ide == 6) {
+                return "welcome";
+            } else {
+                model.addAttribute("invalidCredential", true);
+                return "login";
+            }
+            
         }
     }
 }
