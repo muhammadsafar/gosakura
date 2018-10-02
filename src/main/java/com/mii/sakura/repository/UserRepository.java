@@ -5,14 +5,15 @@
  */
 package com.mii.sakura.repository;
 
-import com.mii.sakura.model.Role;
+import com.mii.sakura.model.User;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author muhammad
  */
-public interface RoleRepository extends CrudRepository<Role, Integer>{
-    
- }
-
+//@Repository
+public interface UserRepository extends CrudRepository<User, Integer>{
+    public User findByEmail(String email);
+}

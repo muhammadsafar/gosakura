@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+<body>
+
+<h2>Text Input User</h2>
+
+<form th:action="@{/save-user}" method="post">
+  <input type="text" th:field="*{lists.id}" readonly="yes"><br>
+  First name:<br>
+  <input type="text" th:name="firstname" th:field="*{lists.firstname}">
+  <br>
+  Last name:<br>
+  <input type="text" th:name="lastname" th:field="*{lists.lastname}">
+  <br>
+  Email name:<br>
+  <input type="text" th:name="email" th:field="*{lists.email}">
+  <br>
+  Password:<br>
+  <input type="text" th:name="password" th:field="*{lists.password}">
+  <br>
+  Active Status:<br>
+  <input type="text" th:name="active" th:field="*{lists.active}">
+  <br>
+  <input type="submit" value="send">
+  
+</form>
+
+</body>
+</html>

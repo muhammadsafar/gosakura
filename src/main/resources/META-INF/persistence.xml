@@ -8,6 +8,7 @@
     <class>com.mii.sakura.model.Mahasiswa</class>
     <class>com.mii.sakura.model.Role</class>
     <class>com.mii.sakura.model.Admin</class>
+    <class>com.mii.sakura.model.User</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
       <property name="javax.persistence.jdbc.user" value="system"/>

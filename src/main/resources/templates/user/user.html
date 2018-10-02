@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+    <head>
+        <title>User</title>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<h2>HTML Table</h2>
+this is <a href="/add-user"> add user </a>
+<table>
+  
+  <tr>
+    <th>ID</th>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>Email</th>
+    <th>Password</th>
+    <th>Active</th>
+    <th>Action</th>
+    
+  </tr>
+  
+      <tr th:each="us : ${userList}">
+          <td th:text="${us.id}"></td>
+          <td th:text="${us.firstname}"></td>
+          <td th:text="${us.lastname}"></td>
+          <td th:text="${us.email}"></td>
+          <td th:text="${us.password}"></td>
+          <td th:text="${us.active}"></td>
+          <td>
+              <a th:href="@{/view/{id}(id=${us.id})}">view</a>
+               <a th:href="@{/update/{id}(id=${us.id})}">edit</a>
+               <a th:href="@{/delete/{id}(id=${us.id})}">delete</a>
+          </td>
+        
+      </tr>
+</table>
+
+</body>
+</html>
